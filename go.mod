@@ -1,13 +1,11 @@
 module github.com/athreyc/grpc-flatbuffers-example
 
-go 1.17
+go 1.21.6
 
 require (
 	github.com/google/flatbuffers v23.5.26+incompatible
 	google.golang.org/grpc v1.61.0
 )
-
-replace github.com/safeie/grpc-flatbuffers-example => github.com/athreyc/grpc-flatbuffers-example v0.0.0-20211215101029-a94887c57c64
 
 require (
 	github.com/golang/protobuf v1.5.3 // indirect
