@@ -17,11 +17,19 @@ func GetRootAsHelloRequest(buf []byte, offset flatbuffers.UOffsetT) *HelloReques
 	return x
 }
 
+func FinishHelloRequestBuffer(builder *flatbuffers.Builder, offset flatbuffers.UOffsetT) {
+	builder.Finish(offset)
+}
+
 func GetSizePrefixedRootAsHelloRequest(buf []byte, offset flatbuffers.UOffsetT) *HelloRequest {
 	n := flatbuffers.GetUOffsetT(buf[offset+flatbuffers.SizeUint32:])
 	x := &HelloRequest{}
 	x.Init(buf, n+offset+flatbuffers.SizeUint32)
 	return x
+}
+
+func FinishSizePrefixedHelloRequestBuffer(builder *flatbuffers.Builder, offset flatbuffers.UOffsetT) {
+	builder.FinishSizePrefixed(offset)
 }
 
 func (rcv *HelloRequest) Init(buf []byte, i flatbuffers.UOffsetT) {
@@ -41,11 +49,27 @@ func (rcv *HelloRequest) Name() []byte {
 	return nil
 }
 
+func (rcv *HelloRequest) NestedName(obj *HelloRequest) *HelloRequest {
+	o := flatbuffers.UOffsetT(rcv._tab.Offset(6))
+	if o != 0 {
+		x := rcv._tab.Indirect(o + rcv._tab.Pos)
+		if obj == nil {
+			obj = new(HelloRequest)
+		}
+		obj.Init(rcv._tab.Bytes, x)
+		return obj
+	}
+	return nil
+}
+
 func HelloRequestStart(builder *flatbuffers.Builder) {
-	builder.StartObject(1)
+	builder.StartObject(2)
 }
 func HelloRequestAddName(builder *flatbuffers.Builder, name flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(0, flatbuffers.UOffsetT(name), 0)
+}
+func HelloRequestAddNestedName(builder *flatbuffers.Builder, nestedName flatbuffers.UOffsetT) {
+	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(nestedName), 0)
 }
 func HelloRequestEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()

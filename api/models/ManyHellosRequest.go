@@ -17,11 +17,19 @@ func GetRootAsManyHellosRequest(buf []byte, offset flatbuffers.UOffsetT) *ManyHe
 	return x
 }
 
+func FinishManyHellosRequestBuffer(builder *flatbuffers.Builder, offset flatbuffers.UOffsetT) {
+	builder.Finish(offset)
+}
+
 func GetSizePrefixedRootAsManyHellosRequest(buf []byte, offset flatbuffers.UOffsetT) *ManyHellosRequest {
 	n := flatbuffers.GetUOffsetT(buf[offset+flatbuffers.SizeUint32:])
 	x := &ManyHellosRequest{}
 	x.Init(buf, n+offset+flatbuffers.SizeUint32)
 	return x
+}
+
+func FinishSizePrefixedManyHellosRequestBuffer(builder *flatbuffers.Builder, offset flatbuffers.UOffsetT) {
+	builder.FinishSizePrefixed(offset)
 }
 
 func (rcv *ManyHellosRequest) Init(buf []byte, i flatbuffers.UOffsetT) {
