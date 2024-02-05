@@ -8,6 +8,8 @@ require (
 	google.golang.org/grpc v1.61.0
 )
 
+replace  github.com/safeie/grpc-flatbuffers-example => github.com/athreyc/grpc-flatbuffers-example 
+
 require (
 	github.com/golang/protobuf v1.5.3 // indirect
 	golang.org/x/net v0.18.0 // indirect
