@@ -10,7 +10,7 @@ import (
 	"time"
 
 	flatbuffers "github.com/google/flatbuffers/go"
-	"github.com/safeie/grpc-flatbuffers-example/api/models"
+	"github.com/athreyc/grpc-flatbuffers-example/api/models"
 	"google.golang.org/grpc"
 )
 
