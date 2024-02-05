@@ -8,6 +8,7 @@ table HelloReply {
 // The request message containing the user's name.
 table HelloRequest {
   name:string;
+  nested_name:HelloRequest;
 }
 
 // The request message containing the user's name and num.
