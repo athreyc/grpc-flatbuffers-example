@@ -1,4 +1,4 @@
-module github.com/safeie/grpc-flatbuffers-example
+module github.com/athreyc/grpc-flatbuffers-example
 
 go 1.17
 
